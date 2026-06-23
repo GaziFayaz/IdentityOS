@@ -1,0 +1,10 @@
+# Ignore all direct child directories by default.
+# Child modules own their own Git repos.
+/*/
+
+# Keep root-level docs and repo config trackable.
+!.gitignore
+!README.md
+!AGENTS.md
+!ROADMAP.md
+!SYSTEM_ARCHITECTURE.md
