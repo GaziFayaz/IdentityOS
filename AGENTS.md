@@ -4,6 +4,17 @@
 
 IdentityOS is a **Personal Knowledge System + AI Portfolio Assistant** built on a Retrieval-Augmented Generation (RAG) architecture. The vault at `vault/` is the source of truth about **Gazi Fayaz Ahmed** — every answer the system generates must be grounded in documents retrieved from this vault. The system is currently in Phase 1 (Knowledge Foundation), focused on populating high-quality structured data before building the AI pipeline.
 
+## Repository Boundaries
+
+- The root IdentityOS Git repo tracks only project-level documentation and coordination files.
+- Root `.gitignore` uses `/*/`, so all direct child folders are ignored by default.
+- Child folders such as `vault/`, `n8n-workflows/`, future `workflows/`, and future `backend-sync/` should be separate Git repositories when they need independent privacy, visibility, deployment, or release history.
+- `vault/` is the private knowledge repo.
+- `n8n-workflows/` is public workflow planning and mechanism documentation.
+- `workflows/` is reserved for the future private repo containing real n8n workflow exports and operational automation details.
+- Do not stage child module contents from the root repo.
+- Commit changes from inside the repo that owns the changed files.
+
 ## Vault Structure
 
 ```

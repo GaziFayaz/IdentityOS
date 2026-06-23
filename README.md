@@ -23,8 +23,9 @@ The project currently focuses on building a high-quality knowledge foundation be
 | Module | Purpose | Visibility |
 |---|---|---|
 | `vault/` | Private Markdown knowledge base and Obsidian-compatible vault | Private |
-| Workflows | Automation for capture, summaries, consolidation, and sync triggers | Private or sanitized public examples |
-| Backend sync service | Parses vault content, chunks documents, creates embeddings, and updates the vector index | Public-safe if it contains no private vault data |
+| `n8n-workflows/` | Public workflow planning docs for capture, summaries, consolidation, and sync trigger mechanisms | Public-safe documentation |
+| `workflows/` | Future private repo for real n8n workflow exports and runtime automation details | Private |
+| Backend sync service | Future service that parses vault content, chunks documents, creates embeddings, and updates the vector index | Public-safe if it contains no private vault data |
 | Retrieval/API layer | Future semantic search and question-answering API | Public-safe if configured without secrets or private data |
 | Portfolio UI | Future public chatbot or portfolio interface | Public-safe |
 
@@ -36,6 +37,18 @@ IdentityOS/
   AGENTS.md                    # Project-wide agent instructions
   ROADMAP.md                   # Current status, phases, and next priorities
   SYSTEM_ARCHITECTURE.md       # Stable system architecture and data flow
+
+  n8n-workflows/               # Public workflow planning and mechanism docs
+    README.md
+    overview.md
+    quick-note-capture-telegram.md
+    daily-reminder.md
+    structured-note-capture-form.md
+    automatic-daily-capture.md
+    daily-summary-approval.md
+    weekly-consolidation.md
+    weekly-vector-sync.md
+    manual-recovery-and-retry.md
 
   vault/                       # Private knowledge layer
     README.md                  # Vault-specific overview
@@ -51,9 +64,22 @@ IdentityOS/
     skills/
     templates/
     weekly-summaries/
+
+  workflows/                   # Future private n8n workflow implementation repo
+  backend-sync/                # Future backend sync service repo
 ```
 
-Future public modules such as backend sync code or sanitized workflow examples can live in separate repositories when their privacy and deployment boundaries are clearer.
+Future public modules such as backend sync code can live in separate repositories when their privacy and deployment boundaries are clearer. Real workflow exports and operational automation details should live in the future private `workflows/` repo, while `n8n-workflows/` remains public planning documentation.
+
+## Git Repository Structure
+
+The root IdentityOS repo tracks project-level documentation and coordination files only.
+
+Root `.gitignore` ignores all direct child folders with `/*/`. This keeps child modules out of the root repo by default, including `vault/`, `n8n-workflows/`, future `workflows/`, and future `backend-sync/`.
+
+Each child module should own its own Git repository when it needs independent privacy, visibility, deployment, or release history. Run Git commands from the repo that owns the files being changed.
+
+If the root repo ever needs to track a child folder directly, add an explicit exception to root `.gitignore` before staging it.
 
 ## Current Status
 
@@ -102,5 +128,8 @@ Secrets, credentials, API keys, webhook URLs, and private tokens should never be
 - Keep system-level documentation at the project root.
 - Keep vault-specific guidance inside `vault/`.
 - Keep real personal data in the private vault only.
+- Keep `n8n-workflows/` limited to public workflow planning and mechanism documentation.
+- Keep real n8n exports and operational workflow details in the future private `workflows/` repo.
 - Use `.env.example` files and sanitized samples for public backend or workflow repositories.
+- Do not stage child module contents from the root repo.
 - Prefer small, frequent documentation updates over large infrequent rewrites.
