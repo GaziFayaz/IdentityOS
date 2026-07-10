@@ -6,7 +6,7 @@ Last Updated: 2026-05-31
 
 # Overview
 
-This system is a Personal Knowledge System + AI Portfolio Assistant.
+This system is a structured personal knowledge base and operating system with AI-assisted retrieval and portfolio experiences as downstream use cases.
 
 It maintains a structured, queryable representation of:
 

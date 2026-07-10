@@ -1,14 +1,14 @@
 # IdentityOS
 
-IdentityOS is a Personal Knowledge System and AI Portfolio Assistant built around a private Markdown knowledge vault and a Retrieval-Augmented Generation (RAG) architecture.
+IdentityOS is a structured personal knowledge base and operating system for organizing professional knowledge, projects, experience, skills, learning, achievements, and activity history.
 
-The system is designed to help an AI assistant answer questions about Gazi Fayaz Ahmed using retrieved, factual knowledge rather than model memory or assumptions.
+The system is designed to support multiple downstream uses, including AI-assisted retrieval, portfolio experiences, search, reporting, workflow automation, and long-term personal knowledge management.
 
 ## Purpose
 
-IdentityOS exists to turn personal professional knowledge into a reliable source of truth for future AI-powered portfolio, search, and question-answering experiences.
+IdentityOS exists to turn personal professional knowledge into a reliable, structured source of truth that can be maintained by humans and consumed by software systems.
 
-The project currently focuses on building a high-quality knowledge foundation before adding the sync, retrieval, API, and user interface layers.
+The AI portfolio assistant is an important downstream use case, but it is not the only purpose of the system. The project currently focuses on building a high-quality knowledge foundation before adding the sync, retrieval, API, automation, and user interface layers.
 
 ## Core Principles
 
@@ -22,7 +22,7 @@ The project currently focuses on building a high-quality knowledge foundation be
 
 | Module | Purpose | Visibility |
 |---|---|---|
-| `vault/` | Private Markdown knowledge base and Obsidian-compatible vault | Private |
+| `vault/` | Private Markdown knowledge base, Obsidian-compatible vault, and canonical source of truth | Private |
 | `n8n-workflows/` | Public workflow planning docs for capture, summaries, consolidation, and sync trigger mechanisms | Public-safe documentation |
 | `workflows/` | Future private repo for real n8n workflow exports and runtime automation details | Private |
 | Backend sync service | Future service that parses vault content, chunks documents, creates embeddings, and updates the vector index | Public-safe if it contains no private vault data |
@@ -34,7 +34,9 @@ The project currently focuses on building a high-quality knowledge foundation be
 ```text
 IdentityOS/
   README.md                    # Project overview
-  AGENTS.md                    # Project-wide agent instructions
+  AGENTS.md                    # Lightweight workspace agent router
+  REPOSITORY_BOUNDARIES.md     # Repository ownership and Git boundaries
+  SECURITY_AND_PRIVACY.md      # Privacy, public/private data, and secret handling rules
   ROADMAP.md                   # Current status, phases, and next priorities
   SYSTEM_ARCHITECTURE.md       # Stable system architecture and data flow
 
@@ -52,7 +54,7 @@ IdentityOS/
 
   vault/                       # Private knowledge layer
     README.md                  # Vault-specific overview
-    AGENTS.md                  # Pointer to project-wide agent instructions
+    AGENTS.md                  # Vault-specific agent rules
     VAULT_GUIDE.md             # Vault conventions and maintenance process
     _index.md                  # Vault table of contents
     achievements/
@@ -79,6 +81,8 @@ Root `.gitignore` ignores all direct child folders with `/*/`. This keeps child 
 
 Each child module should own its own Git repository when it needs independent privacy, visibility, deployment, or release history. Run Git commands from the repo that owns the files being changed.
 
+See `REPOSITORY_BOUNDARIES.md` for the full ownership model.
+
 If the root repo ever needs to track a child folder directly, add an explicit exception to root `.gitignore` before staging it.
 
 ## Current Status
@@ -102,7 +106,7 @@ Vault Markdown
   -> Portfolio assistant response
 ```
 
-The central rule is that the assistant should answer using retrieved context from the vault, not memorized or inferred facts.
+The central rule for AI consumers is that answers should use retrieved context from the vault, not memorized or inferred facts.
 
 See `SYSTEM_ARCHITECTURE.md` for the full system design.
 
@@ -112,16 +116,22 @@ See `SYSTEM_ARCHITECTURE.md` for the full system design.
 |---|---|
 | `SYSTEM_ARCHITECTURE.md` | Stable architecture, layers, and data flow |
 | `ROADMAP.md` | Current status, phases, and upcoming work |
-| `AGENTS.md` | Project-wide rules for AI agents working in this workspace |
+| `AGENTS.md` | Lightweight workspace rules and links to module-specific agent guidance |
+| `REPOSITORY_BOUNDARIES.md` | Repository ownership, child module boundaries, and Git rules |
+| `SECURITY_AND_PRIVACY.md` | Privacy model, secret handling, and public/private data boundaries |
 | `vault/README.md` | Vault-specific overview |
+| `vault/AGENTS.md` | Vault-specific agent rules |
 | `vault/VAULT_GUIDE.md` | Vault writing conventions, naming rules, and maintenance process |
 | `vault/_index.md` | Vault table of contents |
+| `n8n-workflows/AGENTS.md` | n8n workflow documentation rules for agents |
 
 ## Privacy Model
 
 The vault contains personal knowledge and should remain private. Public repositories or examples should use sanitized sample data only.
 
 Secrets, credentials, API keys, webhook URLs, and private tokens should never be committed to any repository. Workflow exports should be reviewed before publication because they can reveal implementation details even without credentials.
+
+See `SECURITY_AND_PRIVACY.md` for the full privacy model.
 
 ## Development Notes
 
