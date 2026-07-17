@@ -43,7 +43,9 @@ IdentityOS/
   n8n-workflows/               # Public workflow planning and mechanism docs
     README.md
     overview.md
-    quick-note-capture-telegram.md
+    quick-note-capture-telegram/
+      README.md
+      IMPLEMENTATION_GUIDE.md
     daily-reminder.md
     structured-note-capture-form.md
     automatic-daily-capture.md
