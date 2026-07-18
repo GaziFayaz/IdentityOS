@@ -15,7 +15,7 @@ The root IdentityOS repository owns project-level coordination documents only:
 - `SYSTEM_ARCHITECTURE.md`
 - `ROADMAP.md`
 
-The root repo should not directly own private vault data, workflow exports, backend implementation code, or future deployable services unless the repository boundary is intentionally changed.
+The root repo should not directly own private vault data, backend implementation code, or future deployable services unless the repository boundary is intentionally changed.
 
 ## Child Modules
 
@@ -26,8 +26,7 @@ Current and planned child modules:
 | Module | Purpose | Expected Visibility |
 |---|---|---|
 | `vault/` | Private Markdown knowledge base and source of truth | Private |
-| `n8n-workflows/` | Public-safe workflow planning and mechanism docs | Public-safe |
-| `workflows/` | Future real n8n exports and operational automation details | Private |
+| `n8n-workflows/` | Public-safe workflow planning docs and n8n workflow JSON exports | Public-safe |
 | `backend-sync/` | Future service for parsing, chunking, embeddings, vector sync, and retry metadata | Public-safe if sanitized |
 
 Each child module should be a separate Git repository when it needs independent privacy, visibility, deployment, or release history.

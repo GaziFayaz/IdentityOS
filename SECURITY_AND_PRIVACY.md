@@ -10,15 +10,14 @@ This document defines cross-cutting security and privacy rules for IdentityOS. M
 - Do not store raw private captures, temporary drafts, or operational runtime state in public-safe repositories.
 - Do not invent personal facts. Personal knowledge must come from explicit vault content.
 - Keep public examples sanitized and free of private personal data.
-- Review workflow exports before committing them anywhere because exports can reveal implementation details even without credentials.
+- Review workflow exports before committing them. Strip `pinData`, personal test data, and any actual secrets. n8n exports reference credentials by name — never replace those references with actual secret values.
 
 ## Data Boundaries
 
 | Data | Correct Location | Notes |
 |---|---|---|
 | Canonical personal knowledge | `vault/` | Private source of truth |
-| Public-safe workflow planning | `n8n-workflows/` | Mechanism docs only |
-| Real workflow exports | Future `workflows/` | Private operational repo |
+| Public-safe workflow planning and n8n exports | `n8n-workflows/` | Docs and secrets-stripped workflow JSON |
 | Raw manual captures | Outside searchable vault | n8n-controlled staging |
 | Raw automatic captures | Outside searchable vault | n8n-controlled staging |
 | Daily summary drafts | Outside searchable vault until approved | Draft staging |

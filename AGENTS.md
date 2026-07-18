@@ -18,7 +18,7 @@ AI assistants, portfolio experiences, search, retrieval, reporting, and automati
 - Do not commit secrets, credentials, API keys, tokens, webhook URLs, or private runtime data.
 - Do not stage child module contents from the root repo.
 - Run git commands from the repository that owns the changed files.
-- Preserve privacy boundaries between public-safe docs, private vault data, and future operational workflow exports.
+- Preserve privacy boundaries between public-safe docs and private vault data.
 - Do not invent personal facts; knowledge about the person must be explicit in the vault.
 - Keep raw captures, generated drafts, and operational automation state outside the searchable vault until approved and summarized.
 
@@ -26,8 +26,7 @@ AI assistants, portfolio experiences, search, retrieval, reporting, and automati
 
 - Root repo: project-level coordination, architecture, roadmap, and workspace guidance.
 - `vault/`: private personal knowledge layer and canonical source of truth.
-- `n8n-workflows/`: public-safe workflow planning and mechanism documentation.
-- `workflows/`: future private repo for real n8n workflow exports and operational details.
+- `n8n-workflows/`: public-safe workflow planning docs and n8n workflow JSON exports (secrets stripped).
 - `backend-sync/`: future service for parsing vault content, chunking, embeddings, vector upserts, sync metadata, and indexing retries.
 
 ## Topic Docs
