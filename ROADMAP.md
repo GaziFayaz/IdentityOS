@@ -203,9 +203,12 @@ Includes:
 - n8n form-based structured note capture
 - Human approval or correction of daily summaries
 - Backend vector sync trigger after approved weekly consolidation
-    
 
-Status: NOT STARTED
+Completed:
+
+- Telegram quick note capture workflow — built, tested, and deployed (see `n8n-workflows/quick-note-capture-telegram/IMPLEMENTATION_GUIDE.md`)
+
+Status: IN PROGRESS
 
 ---
 
