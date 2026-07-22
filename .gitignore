@@ -1,3 +1,4 @@
 # Ignore all direct child directories by default.
 # Child modules own their own Git repos.
 /*/
+skills-lock.json
