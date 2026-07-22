@@ -207,6 +207,7 @@ Includes:
 Completed:
 
 - Telegram quick note capture workflow — built, tested, and deployed (see `n8n-workflows/quick-note-capture-telegram/IMPLEMENTATION_GUIDE.md`)
+- Daily reminder workflow — built, tested, and deployed (see `n8n-workflows/daily-reminder/IMPLEMENTATION_GUIDE.md`)
 
 Status: IN PROGRESS
 
